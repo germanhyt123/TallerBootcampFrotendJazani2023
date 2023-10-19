@@ -18,7 +18,7 @@ const index = (): JSX.Element => {
 	const loadHolder = async (): Promise<void> => {
 		const response = await InvestmentRepository.findAll();
 
-		investmentsSet(response.data);
+		investmentsSet(response);
 		console.log('response: ', response);
 	};
 
