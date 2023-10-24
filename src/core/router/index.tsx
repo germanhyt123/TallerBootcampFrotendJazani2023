@@ -9,10 +9,19 @@ import InvestmentSearch from '@/generals/Investment/views/searchs';
 import Auth from '@/core/layouts/Auth';
 import Login from '@/auth/login/views';
 
+import { PrivateOutlet, PublicOutlet } from './CheckPageNavigation';
+
+import InvestmentCreate from '@/generals/Investment/views/create';
+import InvestmentEdit from '@/generals/Investment/views/edit';
+
 const routes: RouteObject[] = [
 	{
 		path: '/',
-		element: <Admin />,
+		element: (
+			<PrivateOutlet>
+				<Admin />
+			</PrivateOutlet>
+		),
 		children: [
 			{
 				index: true,
@@ -23,14 +32,26 @@ const routes: RouteObject[] = [
 				element: <HolderSearch />,
 			},
 			{
-				path:'/investment',
-				element: <InvestmentSearch/>
-			}
+				path: '/investment',
+				element: <InvestmentSearch />,
+			},
+			{
+				path: '/investment/create',
+				element: <InvestmentCreate />,
+			},
+			{
+				path: '/investment/edit/:id',
+				element: <InvestmentEdit />,
+			},
 		],
 	},
 	{
 		path: '/login',
-		element: <Auth />,
+		element: (
+			<PublicOutlet>
+				<Auth />
+			</PublicOutlet>
+		),
 		children: [
 			{
 				index: true,

@@ -3,10 +3,15 @@ import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import "@popperjs/core"
-import "bootstrap/dist/js/bootstrap.bundle.min.js"
+// import "@popperjs/core"
+// import 'bootstrap';
 
+// import '@/core/templates/scss/app.scss';
+import '@/core/templates/js/app.js';
+
+// import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import "./core/styles/app.scss"
+
 
 import { RouterProvider } from 'react-router-dom'
 import router from './core/router/index.tsx'

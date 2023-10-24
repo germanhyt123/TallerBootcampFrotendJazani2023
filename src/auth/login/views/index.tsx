@@ -10,11 +10,10 @@ import * as Yup from 'yup';
 import { type LoginRequest, type UserSecurityResponse } from '@/auth/login/domain';
 import useLogin from '@/auth/login/application/hooks/useLogin';
 import { LocalStorageSession } from '@/core/sessions';
-import { useNavigate } from 'react-router';
-
+import { useNavigate } from 'react-router-dom';
 
 const index = (): JSX.Element => {
-
+	const navigate = useNavigate();
 
 	// Attributes
 	const formik = useFormik<LoginRequest>({
@@ -31,7 +30,6 @@ const index = (): JSX.Element => {
 			void loginAuth(values);
 		},
 	});
-	
 
 	// React Query
 	const { mutateAsync, isSuccess, isError } = useLogin();
@@ -44,7 +42,7 @@ const index = (): JSX.Element => {
 
 		LocalStorageSession.saveAuthorization(response);
 
-
+		navigate('/');
 	};
 
 	return (
@@ -91,4 +89,4 @@ const index = (): JSX.Element => {
 	);
 };
 
-export default index; 
+export default index;

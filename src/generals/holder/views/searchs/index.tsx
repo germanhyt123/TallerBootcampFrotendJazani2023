@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 import { Card } from 'react-bootstrap';
 
+
+
 const index = (): JSX.Element => {
 	const [holders, holdersSet] = useState<HolderResponse[]>([]);
 
@@ -17,10 +19,12 @@ const index = (): JSX.Element => {
 
 	const loadHolder = async (): Promise<void> => {
 		const response = await HolderRepository.findAll();
+		// const response=await HolderRepository.paginatedSearch(holderFilter);
 
 		holdersSet(response);
 		console.log('response: ', response);
 	};
+	
 
 	return (
 		<>
